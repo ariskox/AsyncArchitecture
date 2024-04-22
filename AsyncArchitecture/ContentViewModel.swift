@@ -9,37 +9,24 @@ import Foundation
 import Dependencies
 import Observation
 import CasePaths
+import Combine
 
 @MainActor
-@Observable
-class ContentViewModel {
-    var isLoading = false
-    var name: String = ""
-    var surname: String = ""
+class ContentViewModel: ObservableObject {
+    @Published var isLoading = false
+    @Published var activePerson: Person?
 
-    var destination: Destination? {
-      didSet { self.bind() }
-    }
+    @Published var destination: Destination?
 
-    @ObservationIgnored
     @Dependency(\.networkMonitor) var networkMonitor
-    
-    @ObservationIgnored
     @Dependency(\.analyticsService) var analyticsService
 
-    @ObservationIgnored
     private var repository = Repository()
-
-    @ObservationIgnored
-    var activePerson: Person?
+    private var cancellable: AnyCancellable?
 
     @CasePathable
     enum Destination {
         case detail(ContentDetailViewModel)
-    }
-
-    private func bind() {
-
     }
 
     func fetch() async throws {
@@ -47,7 +34,12 @@ class ContentViewModel {
         defer { isLoading = false }
         let person = try await repository.fetchPerson()
         self.activePerson = person
-        await refreshUI()
+        
+        cancellable = self.activePerson?.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [unowned self] _ in
+                self.objectWillChange.send()
+            })
     }
 
     func changeName() async throws {
@@ -55,26 +47,18 @@ class ContentViewModel {
         isLoading = true
         defer { isLoading = false }
 
-        await activePerson.changeName("Aris1")
+        self.activePerson?.name = "New name 1"
         try await repository.save(activePerson)
-        await refreshUI()
         await analyticsService.sendEvent("Name changed")
     }
 
     func changeNameByAsyncChange() {
-        guard let activePerson else { return }
         Task {
+            isLoading = true
+            defer { isLoading = false }
             try await Task.sleep(nanoseconds: NSEC_PER_SEC * 1)
-            await activePerson.changeName("Aris2")
-            // TODO: change should be propagated immediately
-//            await refreshUI()
-//            self.name = "BG Change"
+            self.activePerson?.name = "New name 2"
         }
-    }
-
-    func refreshUI() async {
-        self.name = await activePerson?.name ?? ""
-        self.surname = await activePerson?.surname ?? ""
     }
 
     func gotoNextPage() {

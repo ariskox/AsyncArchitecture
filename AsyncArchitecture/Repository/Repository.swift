@@ -14,7 +14,7 @@ actor Repository {
         assert(!Thread.isMainThread)
         let resource = Resource<PersonDTO>(urlRequest: URLRequest(url: URL(string: "https://api.example.com/persons")!))
         let personDTO = try await client.fetchResource(resource)
-        let person = Person(personDTO)
+        let person = await Person(personDTO)
 
         return person
     }

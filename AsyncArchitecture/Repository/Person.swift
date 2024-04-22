@@ -7,9 +7,10 @@
 
 import Foundation
 
-actor Person {
-    var name: String
-    var surname: String
+@MainActor
+final class Person: ObservableObject {
+    @Published var name: String
+    @Published var surname: String
 
     init(name: String, surname: String) {
         self.name = name
@@ -19,10 +20,6 @@ actor Person {
     init(_ personDTO: PersonDTO) {
         self.name = personDTO.name
         self.surname = personDTO.surname
-    }
-
-    func changeName(_ newName: String) {
-        self.name = newName
     }
 }
 
