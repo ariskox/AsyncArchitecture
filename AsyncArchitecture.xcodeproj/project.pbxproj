@@ -16,7 +16,6 @@
 		722C429A2BD6C0C900BD516E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C42892BD6C0C900BD516E /* Person.swift */; };
 		722C429B2BD6C0C900BD516E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C428A2BD6C0C900BD516E /* Repository.swift */; };
 		722C429C2BD6C0C900BD516E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C428C2BD6C0C900BD516E /* NetworkMonitor.swift */; };
-		722C429D2BD6C0C900BD516E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C428E2BD6C0C900BD516E /* ContentView.swift */; };
 		722C429E2BD6C0C900BD516E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C428F2BD6C0C900BD516E /* Client.swift */; };
 		722C429F2BD6C0C900BD516E /* PersonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C42902BD6C0C900BD516E /* PersonDTO.swift */; };
 		722C42A02BD6C0C900BD516E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C42912BD6C0C900BD516E /* Resource.swift */; };
@@ -27,6 +26,7 @@
 		722C42A82BD6C0EF00BD516E /* SwiftUINavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42A72BD6C0EF00BD516E /* SwiftUINavigationCore */; };
 		722C42AB2BD6C0FC00BD516E /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AA2BD6C0FC00BD516E /* Dependencies */; };
 		722C42AD2BD6C0FC00BD516E /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AC2BD6C0FC00BD516E /* DependenciesMacros */; };
+		72B38BE42BD7055D002726F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B38BE32BD7055D002726F1 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,13 +40,13 @@
 		722C42892BD6C0C900BD516E /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		722C428A2BD6C0C900BD516E /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		722C428C2BD6C0C900BD516E /* NetworkMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
-		722C428E2BD6C0C900BD516E /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../Desktop/TestAppSendable/TestAppSendable/ContentView.swift; sourceTree = "<group>"; };
 		722C428F2BD6C0C900BD516E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		722C42902BD6C0C900BD516E /* PersonDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDTO.swift; sourceTree = "<group>"; };
 		722C42912BD6C0C900BD516E /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		722C42932BD6C0C900BD516E /* NavigationLazyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		722C42952BD6C0C900BD516E /* ContentDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		722C42962BD6C0C900BD516E /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		72B38BE32BD7055D002726F1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 				722C42972BD6C0C900BD516E /* Analytics */,
 				722C42952BD6C0C900BD516E /* ContentDetailView.swift */,
 				722C42872BD6C0C900BD516E /* ContentDetailViewModel.swift */,
-				722C428E2BD6C0C900BD516E /* ContentView.swift */,
+				72B38BE32BD7055D002726F1 /* ContentView.swift */,
 				722C42882BD6C0C900BD516E /* ContentViewModel.swift */,
 				722C42922BD6C0C900BD516E /* Network */,
 				722C428B2BD6C0C900BD516E /* Repository */,
@@ -233,12 +233,12 @@
 			files = (
 				722C429B2BD6C0C900BD516E /* Repository.swift in Sources */,
 				722C429C2BD6C0C900BD516E /* NetworkMonitor.swift in Sources */,
+				72B38BE42BD7055D002726F1 /* ContentView.swift in Sources */,
 				722C429A2BD6C0C900BD516E /* Person.swift in Sources */,
 				722C42A22BD6C0C900BD516E /* ContentDetailView.swift in Sources */,
 				722C42A12BD6C0C900BD516E /* NavigationLazyView.swift in Sources */,
 				722C42862BD6C0BA00BD516E /* AppDelegate.swift in Sources */,
 				722C42982BD6C0C900BD516E /* ContentDetailViewModel.swift in Sources */,
-				722C429D2BD6C0C900BD516E /* ContentView.swift in Sources */,
 				722C429F2BD6C0C900BD516E /* PersonDTO.swift in Sources */,
 				722C42782BD6C02100BD516E /* AsyncArchitectureApp.swift in Sources */,
 				722C42A32BD6C0C900BD516E /* AnalyticsService.swift in Sources */,

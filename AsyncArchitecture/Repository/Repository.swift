@@ -10,13 +10,18 @@ import Foundation
 actor Repository {
     var client: Client = Client()
 
-    func fetchPerson() async throws -> Person {
+    func fetchPersons() async throws -> [Person] {
         assert(!Thread.isMainThread)
         let resource = Resource<PersonDTO>(urlRequest: URLRequest(url: URL(string: "https://api.example.com/persons")!))
         let personDTO = try await client.fetchResource(resource)
-        let person = await Person(personDTO)
 
-        return person
+        var persons: [Person] = []
+
+        for _ in 1...100000 {
+            persons.append(Person(personDTO))
+        }
+
+        return persons
     }
 
     func save(_ person: Person) async throws {
