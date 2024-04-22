@@ -13,7 +13,9 @@ struct AsyncArchitectureApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: appDelegate.viewModel)
+            NavigationStack {
+                ContentView(viewModel: appDelegate.viewModel)
+            }
         }
     }
 }
