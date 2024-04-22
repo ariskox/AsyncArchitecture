@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftUINavigation
+import CasePaths
 
 struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel
@@ -18,6 +20,9 @@ struct ContentView: View {
             } else {
                 EmptyView()
             }
+
+            Text(viewModel.activePerson?.name ?? "")
+            Text(viewModel.activePerson?.surname ?? "")
 
             Button(action: {
                 Task {
@@ -53,7 +58,13 @@ struct ContentView: View {
             }
 
         }
+        .navigationTitle("Main screen")
         .padding()
+        .navigationDestination(unwrapping: self.$viewModel.destination.detail) { $viewModel in
+            NavigationLazyView(
+                ContentDetailView(viewModel: viewModel)
+            )
+        }
     }
 }
 

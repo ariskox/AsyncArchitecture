@@ -11,7 +11,10 @@ struct ContentDetailView: View {
     @State var viewModel: ContentDetailViewModel
 
     var body: some View {
-        Text(viewModel.name)
+        VStack {
+            Text(viewModel.name)
+        }
+        .navigationTitle("Detail screen")
     }
 }
 
