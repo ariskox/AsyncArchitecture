@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LazyArray<ElementIn, ElementOut>: RandomAccessCollection, @unchecked Sendable {
+class LazyArray<ElementIn, ElementOut>: RandomAccessCollection {
     private var arrayIn: [ElementIn?]
     private var arrayOut: [ElementOut?]
     private let mapping: (ElementIn) -> (ElementOut)
