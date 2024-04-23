@@ -31,6 +31,7 @@ class ContentViewModel: ObservableObject {
     @CasePathable
     enum Destination {
         case detail(ContentDetailViewModel)
+        case contentData
     }
 
     init() {
@@ -59,6 +60,10 @@ class ContentViewModel: ObservableObject {
 
     func gotoNextPage() {
         self.destination = .detail(ContentDetailViewModel(persons: &self.persons))
+    }
+    
+    func gotoContentData() {
+        self.destination = .contentData
     }
 
 }

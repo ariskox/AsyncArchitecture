@@ -37,6 +37,11 @@ struct ContentView: View {
             }) {
                 Text("Go to Next page")
             }
+            Button(action: {
+                viewModel.gotoContentData()
+            }) {
+                Text("Go to Swift Data")
+            }
 
         }
         .navigationTitle("Main screen")
@@ -44,6 +49,11 @@ struct ContentView: View {
         .navigationDestination(unwrapping: self.$viewModel.destination.detail) { $viewModel in
             NavigationLazyView(
                 ContentDetailView(viewModel: viewModel)
+            )
+        }
+        .navigationDestination(unwrapping: self.$viewModel.destination.contentData) { $viewModel in
+            NavigationLazyView(
+                ContentDataView()
             )
         }
     }
