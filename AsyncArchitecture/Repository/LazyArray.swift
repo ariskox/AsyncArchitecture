@@ -8,7 +8,7 @@
 import Foundation
 
 class LazyArray<ElementIn, ElementOut>: RandomAccessCollection, @unchecked Sendable {
-    private let arrayIn: [ElementIn]
+    private var arrayIn: [ElementIn?]
     private var arrayOut: [ElementOut?]
     private let mapping: (ElementIn) -> (ElementOut)
 
@@ -34,8 +34,10 @@ class LazyArray<ElementIn, ElementOut>: RandomAccessCollection, @unchecked Senda
             let existingItem = arrayOut[index]
             if existingItem != nil { return existingItem! }
 
-            let created = mapping(arrayIn[index])
+            let created = mapping(arrayIn[index]!)
             arrayOut[index] = created
+            arrayIn[index] = nil // no longer necessary. free memory
+
             return created
         }
     }
