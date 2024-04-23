@@ -8,11 +8,15 @@
 import Foundation
 
 actor Repository {
-    var client: Client = Client()
+    var client: Client
 
+    init(client: Client) {
+        self.client = client
+    }
+    
     func fetchPersons() async throws -> [Person] {
         assert(!Thread.isMainThread)
-        let resource = Resource<PersonDTO>(urlRequest: URLRequest(url: URL(string: "https://api.example.com/persons")!))
+        let resource = await client.getResource()
         let personDTO = try await client.fetchResource(resource)
 
         var persons: [Person] = []

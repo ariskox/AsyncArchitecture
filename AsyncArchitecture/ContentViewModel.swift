@@ -24,7 +24,7 @@ class ContentViewModel: ObservableObject {
 
     @Published var actor = ActorObject()
 
-    private var repository = Repository()
+    private var repository: Repository
     private var cancellable: AnyCancellable?
     private var cancellables: [AnyCancellable] = []
 
@@ -34,6 +34,8 @@ class ContentViewModel: ObservableObject {
     }
 
     init() {
+        repository = Repository(client: Client())
+        
         actor.objectWillChange
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [unowned self] _ in
