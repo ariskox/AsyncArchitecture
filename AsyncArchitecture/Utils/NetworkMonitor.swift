@@ -10,7 +10,7 @@ import Dependencies
 import Network
 
 @MainActor
-public class NetworkMonitor: ObservableObject {
+class NetworkMonitor: ObservableObject {
     @Published private(set) var isConnected = true
     @Published private(set) var isCellular = false
 
@@ -18,11 +18,11 @@ public class NetworkMonitor: ObservableObject {
     private let workerQueue = DispatchQueue.global()
     private var isStarted = false
 
-    public init() {
+    init() {
         isConnected = false
     }
 
-    public func start() {
+    func start() {
         guard !isStarted else { return }
         isStarted = true
 
@@ -44,14 +44,14 @@ public class NetworkMonitor: ObservableObject {
 
     }
 
-    public func stop() {
+    func stop() {
         isStarted = false
         nwMonitor.cancel()
     }
 }
 
 extension NetworkMonitor: DependencyKey {
-    nonisolated public static var liveValue: NetworkMonitor {
+    nonisolated static var liveValue: NetworkMonitor {
         MainActor.assumeIsolated {
             return NetworkMonitor()
         }
@@ -59,7 +59,7 @@ extension NetworkMonitor: DependencyKey {
 }
 
 extension DependencyValues {
-    public var networkMonitor: NetworkMonitor {
+    var networkMonitor: NetworkMonitor {
         get { self[NetworkMonitor.self] }
         set { self[NetworkMonitor.self] = newValue }
     }

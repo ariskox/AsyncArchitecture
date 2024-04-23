@@ -8,14 +8,14 @@
 import SwiftUI
 
 /// Use this wrapper to have lazy navigation links
-public struct NavigationLazyView<Content: View>: View {
+struct NavigationLazyView<Content: View>: View {
     let build: () -> Content
 
-    public init(_ build: @autoclosure @escaping () -> Content) {
+    init(_ build: @autoclosure @escaping () -> Content) {
         self.build = build
     }
 
-    public var body: Content {
+    var body: Content {
         build()
     }
 }

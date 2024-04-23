@@ -7,12 +7,12 @@
 
 import Foundation
 
-final public class Resource<A: Sendable>: Sendable {
-    public let urlRequest: URLRequest
-    public let parse: @Sendable (Data) throws -> A
-    public let validate: @Sendable (String?) -> Bool
+final class Resource<A: Sendable>: Sendable {
+    let urlRequest: URLRequest
+    let parse: @Sendable (Data) throws -> A
+    let validate: @Sendable (String?) -> Bool
 
-    public init(urlRequest: URLRequest,
+    init(urlRequest: URLRequest,
                 parse: @escaping @Sendable (Data) throws -> A = Parser().parse,
                 validate: @escaping @Sendable (String?) -> Bool = Validator().validate) {
         self.urlRequest = urlRequest
@@ -44,8 +44,8 @@ extension Resource {
     }
 }
 
-public struct Parser<A: Sendable>: Sendable {
-    @Sendable public func parse(_ data: Data) throws -> A {
+struct Parser<A: Sendable>: Sendable {
+    @Sendable func parse(_ data: Data) throws -> A {
         switch A.self {
         case let decodableType as Decodable.Type:
             // Use openedJSONDecode with typeerasure cause decode(_:from:) has a generic placeholder T : Decodable:
@@ -62,11 +62,11 @@ public struct Parser<A: Sendable>: Sendable {
             throw ResourceError.unableToParse
         }
     }
-    public init() {}
+    init() {}
 
 }
 
-public enum ResourceError: Error {
+enum ResourceError: Error {
     case unableToParse
     case noData
     case invalidHTTPResponse
@@ -75,20 +75,20 @@ public enum ResourceError: Error {
 }
 
 extension Decodable {
-    public static func openedJSONDecode(decoder: JSONDecoder, data: Data) throws -> Self {
+    static func openedJSONDecode(decoder: JSONDecoder, data: Data) throws -> Self {
         return try decoder.decode(self, from: data)
     }
 }
 
 
-final public class Validator: Sendable {
+final class Validator: Sendable {
     let acceptableContentType: String
 
-    public init(contentType: String = "application/json") {
+    init(contentType: String = "application/json") {
         self.acceptableContentType = contentType
     }
 
-    @Sendable public func validate(contentType: String?) -> Bool {
+    @Sendable func validate(contentType: String?) -> Bool {
         guard let contentType = contentType else {
             return false
         }
