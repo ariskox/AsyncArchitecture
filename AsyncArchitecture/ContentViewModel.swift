@@ -14,19 +14,19 @@ import Combine
 @MainActor
 class ContentViewModel: ObservableObject {
     @Published var isLoading = false
-    @Published var activePerson: Person?
-    @Published var value: String = ""
+    @Published var statusText: String = ""
 
     @Published var destination: Destination?
 
     @Dependency(\.networkMonitor) var networkMonitor
     @Dependency(\.analyticsService) var analyticsService
 
-    @Published var actor = ActorObject()
-
     private var repository: Repository
     private var cancellable: AnyCancellable?
     private var cancellables: [AnyCancellable] = []
+
+//    @Published var persons: LazyMapSequence<LazySequence<[PersonDTO]>.Elements, Person> = [].lazy.map { _ in fatalError() }
+    @Published var persons: LazyArray<PersonDTO, Person> = .init([], map: { _ in fatalError() })
 
     @CasePathable
     enum Destination {
@@ -36,14 +36,6 @@ class ContentViewModel: ObservableObject {
     init() {
         repository = Repository(client: Client())
         
-        actor.objectWillChange
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [unowned self] _ in
-                self.objectWillChange.send()
-                self.value = "Changed actor"
-            })
-            .store(in: &cancellables)
-
         networkMonitor.objectWillChange
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [unowned self] _ in
@@ -55,46 +47,18 @@ class ContentViewModel: ObservableObject {
     func fetch() async throws {
         isLoading = true
         defer { isLoading = false }
-        let person = try await repository.fetchPersons().first!
-        self.activePerson = person
+        let personsDTO = try await repository.fetchPersons()
+
+        self.persons = LazyArray(personsDTO, map: {
+            debugPrint("creating person \($0.name)")
+            return Person($0)
+        })
         
-        cancellable = self.activePerson?.objectWillChange
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [unowned self] _ in
-                self.objectWillChange.send()
-            })
-
-    }
-
-    func changeName() async throws {
-        guard let activePerson else { return }
-        isLoading = true
-        defer { isLoading = false }
-
-//        self.activePerson?.name = "New name 1"
-        self.activePerson?.setName("New name 1")
-        try await repository.save(activePerson)
-        await analyticsService.sendEvent("Name changed")
-    }
-
-    func changeNameByAsyncChange() {
-        Task {
-            isLoading = true
-            defer { isLoading = false }
-            try await Task.sleep(nanoseconds: NSEC_PER_SEC * 1)
-//            self.activePerson?.name = "New name 2"
-            self.activePerson?.setName("New name 2")
-        }
+        self.statusText = "Loaded \(self.persons.count) objects"
     }
 
     func gotoNextPage() {
-        guard let activePerson = self.activePerson else { return }
-        self.destination = .detail(ContentDetailViewModel(person: activePerson))
+        self.destination = .detail(ContentDetailViewModel(persons: &self.persons))
     }
 
-    func changeActor() {
-        Task {
-            await actor.changeName()
-        }
-    }
 }

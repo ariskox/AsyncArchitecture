@@ -10,16 +10,9 @@ import Foundation
 @MainActor
 @Observable
 class ContentDetailViewModel {
-    private let activePerson: Person
+    var persons: LazyArray<PersonDTO, Person>
 
-    var name: String = ""
-
-    init(person: Person) {
-        self.activePerson = person
-        refreshUI()
-    }
-
-    func refreshUI() {
-        self.name = activePerson.name
+    init(persons: inout LazyArray<PersonDTO, Person>) {
+        self.persons = persons
     }
 }

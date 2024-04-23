@@ -26,6 +26,7 @@
 		722C42A82BD6C0EF00BD516E /* SwiftUINavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42A72BD6C0EF00BD516E /* SwiftUINavigationCore */; };
 		722C42AB2BD6C0FC00BD516E /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AA2BD6C0FC00BD516E /* Dependencies */; };
 		722C42AD2BD6C0FC00BD516E /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AC2BD6C0FC00BD516E /* DependenciesMacros */; };
+		7232ADBE2BD7E78B00201D8B /* LazyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7232ADBD2BD7E78A00201D8B /* LazyArray.swift */; };
 		72B38BE42BD7055D002726F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B38BE32BD7055D002726F1 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		722C42932BD6C0C900BD516E /* NavigationLazyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		722C42952BD6C0C900BD516E /* ContentDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		722C42962BD6C0C900BD516E /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		7232ADBD2BD7E78A00201D8B /* LazyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyArray.swift; sourceTree = "<group>"; };
 		72B38BE32BD7055D002726F1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 			children = (
 				722C42892BD6C0C900BD516E /* Person.swift */,
 				722C428A2BD6C0C900BD516E /* Repository.swift */,
+				7232ADBD2BD7E78A00201D8B /* LazyArray.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			files = (
 				722C429B2BD6C0C900BD516E /* Repository.swift in Sources */,
 				722C429C2BD6C0C900BD516E /* NetworkMonitor.swift in Sources */,
+				7232ADBE2BD7E78B00201D8B /* LazyArray.swift in Sources */,
 				72B38BE42BD7055D002726F1 /* ContentView.swift in Sources */,
 				722C429A2BD6C0C900BD516E /* Person.swift in Sources */,
 				722C42A22BD6C0C900BD516E /* ContentDetailView.swift in Sources */,
@@ -378,6 +382,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AsyncArchitecture/Preview Content\"";
+				DEVELOPMENT_TEAM = 859ZQDY286;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -407,6 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AsyncArchitecture/Preview Content\"";
+				DEVELOPMENT_TEAM = 859ZQDY286;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -8,6 +8,7 @@
 import Foundation
 
 struct PersonDTO: Codable {
+    var id: String
     var name: String
     var surname: String
 }

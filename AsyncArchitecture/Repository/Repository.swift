@@ -14,21 +14,25 @@ actor Repository {
         self.client = client
     }
     
-    func fetchPersons() async throws -> [Person] {
+    func fetchPersons() async throws -> [PersonDTO] {
         assert(!Thread.isMainThread)
         let resource = await client.getResource()
-        let personDTO = try await client.fetchResource(resource)
+        
+        // simulate fetching a resource
+        let _ = try await client.fetchResource(resource)
 
-        var persons: [Person] = []
-
-        for _ in 1...100000 {
-            persons.append(Person(personDTO))
+        // just build 1000 random items
+        return (1...1000).map { i in
+            PersonDTO(
+                id: UUID().uuidString,
+                name: "name \(i)",
+                surname: "surname \(i)"
+            )
         }
-
-        return persons
     }
 
     func save(_ person: Person) async throws {
         try await Task.sleep(nanoseconds: NSEC_PER_SEC * 1)
     }
 }
+

@@ -10,19 +10,19 @@ import SwiftUINavigation
 import CasePaths
 
 struct ContentView: View {
-    @ObservedObject var viewModel: ContentViewModel
+    @StateObject var viewModel: ContentViewModel
 
     var body: some View {
         VStack(spacing: 20) {
             Text(viewModel.networkMonitor.isConnected ? "Connected" : "Not connected")
+
             if viewModel.isLoading {
                 ProgressView()
             } else {
                 EmptyView()
             }
 
-            Text(viewModel.activePerson?.name ?? "")
-            Text(viewModel.activePerson?.surname ?? "")
+            Text(viewModel.statusText)
 
             Button(action: {
                 Task {
@@ -33,28 +33,9 @@ struct ContentView: View {
             }
 
             Button(action: {
-                Task {
-                    try await viewModel.changeName()
-                }
-            }) {
-                Text("Change name")
-            }
-
-            Button(action: {
-                viewModel.changeNameByAsyncChange()
-            }) {
-                Text("Change name")
-            }
-            Button(action: {
-                viewModel.changeActor()
-            }) {
-                Text("Change by actor")
-            }
-
-            Button(action: {
                 viewModel.gotoNextPage()
             }) {
-                Text("Go to details")
+                Text("Go to Next page")
             }
 
         }

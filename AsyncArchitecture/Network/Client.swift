@@ -17,6 +17,7 @@ actor Client {
         let unused = try resource.parse(
             """
             {
+                "id": "1",
                 "name": "Aris",
                 "surname": "Test"
             }

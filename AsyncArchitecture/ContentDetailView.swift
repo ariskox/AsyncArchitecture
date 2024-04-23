@@ -11,20 +11,27 @@ struct ContentDetailView: View {
     @State var viewModel: ContentDetailViewModel
 
     var body: some View {
-        VStack {
-            Text(viewModel.name)
+        List {
+            ForEach(viewModel.persons) {
+                Text($0.name)
+            }
         }
         .navigationTitle("Detail screen")
     }
 }
 
 #Preview {
-    ContentDetailView(
+    var persons = LazyArray([PersonDTO(
+        id: "1",
+        name: "Aris",
+        surname: "Test")
+    ], map: {
+        return Person($0)
+    })
+
+    return ContentDetailView(
         viewModel: ContentDetailViewModel(
-            person: Person(
-                name: "Aris",
-                surname: "Test"
-            )
+            persons: &persons
        )
     )
 }
