@@ -21,12 +21,11 @@ class ContentViewModel: ObservableObject {
     @Dependency(\.networkMonitor) var networkMonitor
     @Dependency(\.analyticsService) var analyticsService
 
-    private var repository: Repository
+    private let repository: Repository
     private var cancellable: AnyCancellable?
     private var cancellables: [AnyCancellable] = []
 
-//    @Published var persons: LazyMapSequence<LazySequence<[PersonDTO]>.Elements, Person> = [].lazy.map { _ in fatalError() }
-    @Published var persons: LazyArray<PersonDTO, Person> = .init([], map: { _ in fatalError() })
+    @Published var persons: [Person] = []
 
     @CasePathable
     enum Destination {
@@ -49,17 +48,13 @@ class ContentViewModel: ObservableObject {
         isLoading = true
         defer { isLoading = false }
         let personsDTO = try await repository.fetchPersons()
+        self.persons = personsDTO.map { Person($0) }
 
-        self.persons = LazyArray(personsDTO, map: {
-            debugPrint("creating person \($0.name)")
-            return Person($0)
-        })
-        
         self.statusText = "Loaded \(self.persons.count) objects"
     }
 
     func gotoNextPage() {
-        self.destination = .detail(ContentDetailViewModel(persons: &self.persons))
+        self.destination = .detail(ContentDetailViewModel(persons: self.persons))
     }
     
     func gotoContentData() {

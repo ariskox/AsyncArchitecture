@@ -21,17 +21,17 @@ struct ContentDetailView: View {
 }
 
 #Preview {
-    var persons = LazyArray([PersonDTO(
-        id: "1",
-        name: "Aris",
-        surname: "Test")
-    ], map: {
-        return Person($0)
-    })
+    let persons = [
+        Person(
+            id: "1",
+            name: "Aris",
+            surname: "Test"
+        )
+    ]
 
     return ContentDetailView(
         viewModel: ContentDetailViewModel(
-            persons: &persons
+            persons: persons
        )
     )
 }

@@ -46,12 +46,12 @@ struct ContentView: View {
         }
         .navigationTitle("Main screen")
         .padding()
-        .navigationDestination(unwrapping: self.$viewModel.destination.detail) { $viewModel in
+        .navigationDestination(item: self.$viewModel.destination.detail) { $viewModel in
             NavigationLazyView(
                 ContentDetailView(viewModel: viewModel)
             )
         }
-        .navigationDestination(unwrapping: self.$viewModel.destination.contentData) { $viewModel in
+        .navigationDestination(item: self.$viewModel.destination.contentData) { $viewModel in
             NavigationLazyView(
                 ContentDataView()
             )

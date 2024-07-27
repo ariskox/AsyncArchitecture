@@ -8,7 +8,7 @@
 import Foundation
 
 actor Repository {
-    var client: Client
+    let client: Client
 
     init(client: Client) {
         self.client = client

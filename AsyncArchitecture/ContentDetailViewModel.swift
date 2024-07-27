@@ -10,9 +10,9 @@ import Foundation
 @MainActor
 @Observable
 class ContentDetailViewModel {
-    var persons: LazyArray<PersonDTO, Person>
+    private(set) var persons: [Person]
 
-    init(persons: inout LazyArray<PersonDTO, Person>) {
+    init(persons: [Person]) {
         self.persons = persons
     }
 }

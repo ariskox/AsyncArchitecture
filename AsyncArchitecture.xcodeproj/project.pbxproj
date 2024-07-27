@@ -26,7 +26,6 @@
 		722C42A82BD6C0EF00BD516E /* SwiftUINavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42A72BD6C0EF00BD516E /* SwiftUINavigationCore */; };
 		722C42AB2BD6C0FC00BD516E /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AA2BD6C0FC00BD516E /* Dependencies */; };
 		722C42AD2BD6C0FC00BD516E /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AC2BD6C0FC00BD516E /* DependenciesMacros */; };
-		7232ADBE2BD7E78B00201D8B /* LazyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7232ADBD2BD7E78A00201D8B /* LazyArray.swift */; };
 		723F2DD82BD817B3008BD26B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723F2DD72BD817B3008BD26B /* Item.swift */; };
 		723F2DDA2BD8180D008BD26B /* ContentDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723F2DD92BD8180D008BD26B /* ContentDataView.swift */; };
 		72B38BE42BD7055D002726F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B38BE32BD7055D002726F1 /* ContentView.swift */; };
@@ -49,7 +48,6 @@
 		722C42932BD6C0C900BD516E /* NavigationLazyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		722C42952BD6C0C900BD516E /* ContentDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		722C42962BD6C0C900BD516E /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
-		7232ADBD2BD7E78A00201D8B /* LazyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyArray.swift; sourceTree = "<group>"; };
 		723F2DD72BD817B3008BD26B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		723F2DD92BD8180D008BD26B /* ContentDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDataView.swift; sourceTree = "<group>"; };
 		72B38BE32BD7055D002726F1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			children = (
 				722C42892BD6C0C900BD516E /* Person.swift */,
 				722C428A2BD6C0C900BD516E /* Repository.swift */,
-				7232ADBD2BD7E78A00201D8B /* LazyArray.swift */,
 				723F2DD72BD817B3008BD26B /* Item.swift */,
 			);
 			path = Repository;
@@ -242,7 +239,6 @@
 			files = (
 				722C429B2BD6C0C900BD516E /* Repository.swift in Sources */,
 				722C429C2BD6C0C900BD516E /* NetworkMonitor.swift in Sources */,
-				7232ADBE2BD7E78B00201D8B /* LazyArray.swift in Sources */,
 				72B38BE42BD7055D002726F1 /* ContentView.swift in Sources */,
 				723F2DD82BD817B3008BD26B /* Item.swift in Sources */,
 				722C429A2BD6C0C900BD516E /* Person.swift in Sources */,
@@ -407,7 +403,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -437,7 +433,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
