@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class Person: ObservableObject, Identifiable {
     let id: String
     @Published private(set) var name: String!

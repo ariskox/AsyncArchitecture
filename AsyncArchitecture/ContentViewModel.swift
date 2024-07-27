@@ -47,8 +47,7 @@ class ContentViewModel: ObservableObject {
     func fetch() async throws {
         isLoading = true
         defer { isLoading = false }
-        let personsDTO = try await repository.fetchPersons()
-        self.persons = personsDTO.map { Person($0) }
+        self.persons = try await repository.fetchPersons()
 
         self.statusText = "Loaded \(self.persons.count) objects"
     }
