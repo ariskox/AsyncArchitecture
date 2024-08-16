@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72079F4E2C6F53BC003B1FA4 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 72079F4D2C6F53BC003B1FA4 /* SwiftUINavigation */; };
 		722C42782BD6C02100BD516E /* AsyncArchitectureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C42772BD6C02100BD516E /* AsyncArchitectureApp.swift */; };
 		722C427C2BD6C02300BD516E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722C427B2BD6C02300BD516E /* Assets.xcassets */; };
 		722C427F2BD6C02300BD516E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722C427E2BD6C02300BD516E /* Preview Assets.xcassets */; };
@@ -22,8 +23,6 @@
 		722C42A12BD6C0C900BD516E /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C42932BD6C0C900BD516E /* NavigationLazyView.swift */; };
 		722C42A22BD6C0C900BD516E /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C42952BD6C0C900BD516E /* ContentDetailView.swift */; };
 		722C42A32BD6C0C900BD516E /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C42962BD6C0C900BD516E /* AnalyticsService.swift */; };
-		722C42A62BD6C0EF00BD516E /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42A52BD6C0EF00BD516E /* SwiftUINavigation */; };
-		722C42A82BD6C0EF00BD516E /* SwiftUINavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42A72BD6C0EF00BD516E /* SwiftUINavigationCore */; };
 		722C42AB2BD6C0FC00BD516E /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AA2BD6C0FC00BD516E /* Dependencies */; };
 		722C42AD2BD6C0FC00BD516E /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 722C42AC2BD6C0FC00BD516E /* DependenciesMacros */; };
 		723F2DD82BD817B3008BD26B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723F2DD72BD817B3008BD26B /* Item.swift */; };
@@ -59,9 +58,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				722C42AB2BD6C0FC00BD516E /* Dependencies in Frameworks */,
-				722C42A62BD6C0EF00BD516E /* SwiftUINavigation in Frameworks */,
 				722C42AD2BD6C0FC00BD516E /* DependenciesMacros in Frameworks */,
-				722C42A82BD6C0EF00BD516E /* SwiftUINavigationCore in Frameworks */,
+				72079F4E2C6F53BC003B1FA4 /* SwiftUINavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,10 +172,9 @@
 			);
 			name = AsyncArchitecture;
 			packageProductDependencies = (
-				722C42A52BD6C0EF00BD516E /* SwiftUINavigation */,
-				722C42A72BD6C0EF00BD516E /* SwiftUINavigationCore */,
 				722C42AA2BD6C0FC00BD516E /* Dependencies */,
 				722C42AC2BD6C0FC00BD516E /* DependenciesMacros */,
+				72079F4D2C6F53BC003B1FA4 /* SwiftUINavigation */,
 			);
 			productName = AsyncArchitecture;
 			productReference = 722C42742BD6C02100BD516E /* AsyncArchitecture.app */;
@@ -208,8 +205,8 @@
 			);
 			mainGroup = 722C426B2BD6C02100BD516E;
 			packageReferences = (
-				722C42A42BD6C0EF00BD516E /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 				722C42A92BD6C0FC00BD516E /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				72079F4C2C6F53BC003B1FA4 /* XCRemoteSwiftPackageReference "swift-navigation" */,
 			);
 			productRefGroup = 722C42752BD6C02100BD516E /* Products */;
 			projectDirPath = "";
@@ -462,12 +459,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		722C42A42BD6C0EF00BD516E /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
+		72079F4C2C6F53BC003B1FA4 /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation.git";
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
+				minimumVersion = 2.0.5;
 			};
 		};
 		722C42A92BD6C0FC00BD516E /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
@@ -475,21 +472,16 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.2;
+				minimumVersion = 1.3.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		722C42A52BD6C0EF00BD516E /* SwiftUINavigation */ = {
+		72079F4D2C6F53BC003B1FA4 /* SwiftUINavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 722C42A42BD6C0EF00BD516E /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
+			package = 72079F4C2C6F53BC003B1FA4 /* XCRemoteSwiftPackageReference "swift-navigation" */;
 			productName = SwiftUINavigation;
-		};
-		722C42A72BD6C0EF00BD516E /* SwiftUINavigationCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 722C42A42BD6C0EF00BD516E /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
-			productName = SwiftUINavigationCore;
 		};
 		722C42AA2BD6C0FC00BD516E /* Dependencies */ = {
 			isa = XCSwiftPackageProductDependency;
