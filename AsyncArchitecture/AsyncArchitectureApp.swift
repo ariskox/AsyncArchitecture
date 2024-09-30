@@ -8,6 +8,18 @@
 import SwiftUI
 import SwiftData
 
+#if swift(>=6.0)
+    // Code that should only run in Swift 6 or later
+#else
+#error("Compile this app with swift 6 mode")
+#endif
+
+#if hasFeature(StrictConcurrency)
+    // Code to execute when strict concurrency checking is enabled
+#else
+#error("Enable strict concurrency from the project settings")
+#endif
+
 @main
 struct AsyncArchitectureApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
